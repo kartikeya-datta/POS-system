@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | Retail Management</title>
+    <link rel="stylesheet" href="./css/style.css"/>
+    <style>
+      html {
+        position: relative; 
+        min-height: 100%; 
+     }
+      body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          min-height: 100vh;
+          background-color: #f0f0f0;
+          display: flex; 
+          flex-direction: column;
+          padding-bottom: 60px;
+      }
+
+      .form-container {
+          display: flex;
+          flex: 1 0 auto;
+          align-items: center;
+          justify-content: center;
+          min-height: fit-content;
+      }
+      .form{
+          background-color: #fff;
+          padding: 30px;
+          border-radius: 5px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+          min-width: 500px;
+          max-width: 800px;
+          display: block;
+          margin: 30px 2px;
+      }
+      h1 {
+          text-align: center;
+          margin-bottom: 20px;
+      }
+
+      .input-group {
+          margin-bottom: 15px;
+      }
+
+      .input-group label {
+          display: block;
+          margin-bottom: 5px;
+          font-weight: bolder;
+      }
+
+      .input-group input {
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #ddd;
+          border-radius: 3px;
+      }
+
+      button {
+          background-color: #007bff;
+          color: #fff;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 3px;
+          cursor: pointer;
+      }
+      footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%; 
+        background-color: #333; 
+        color: white;
+        text-align: center;
+        padding: 20px 0; 
+     }
+      .footer-content {
+        max-width: 960px;
+        margin: 0 auto;
+      }
+      header#home,
+      .form-container,
+      footer {
+        flex: 0 0 auto;
+      }
+      .btn{
+        background-color: #333;
+        border-radius: 8px;
+        padding: 8px 20px !important;
+      }
+      .btn:hover{
+        background-color: #007bff;
+        color: #fff;
+      }
+
+      .contain {
+        background-color: #eee;
+        max-width: 1170px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 1em;
+    }
+        div.form {
+        background-color: #eee;
+        }
+        .contact-wrapper {
+        margin: auto 0;
+        }
+
+        .submit-btn {
+        float: left;
+        }
+        .reset-btn {
+        float: right;
+        }
+
+        .form-headline:after {
+        content: "";
+        display: block;
+        width: 10%;
+        padding-top: 10px;
+        border-bottom: 3px solid #ec1c24;
+        }
+
+        .highlight-text {
+        color: #ec1c24;
+        }
+
+        .hightlight-contact-info {
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 1.5;
+        }
+
+        .highlight-text-grey {
+        font-weight: 500;
+        }
+
+        .email-info {
+            margin-top: 20px;
+        }
+
+        ::-webkit-input-placeholder { 
+        font-family: 'Roboto', sans-serif;
+        }
+
+        .required-input {
+        color: black;
+        }
+        @media (min-width: 600px) {
+        .contain {
+            padding: 0;
+        }
+        }
+
+        h3,
+        ul {
+        margin: 0;
+        }
+
+        h3 {
+        margin-bottom: 1rem;
+        }
+
+        .form-input:focus,
+        textarea:focus{
+        outline: 1.5px solid #ec1c24;
+        }
+
+        .form-input,
+        textarea {
+        width: 100%;
+        border: 1px solid #bdbdbd;
+        border-radius: 5px;
+        }
+
+        .wrapper > * {
+        padding: 1em;
+        }
+        @media (min-width: 700px) {
+        .wrapper {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+        }
+        .wrapper > * {
+            padding: 2em 2em;
+        }
+        }
+
+        ul {
+        list-style: none;
+        padding: 0;
+        }
+
+        .contacts {
+        color: #212d31;
+        }
+
+        .form {
+        background: #fff;
+        }
+
+        form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 20px;
+        }
+        form label {
+        display: block;
+        }
+        form p {
+        margin: 0;
+        }
+
+        .full-width {
+        grid-column: 1 / 3;
+        }
+
+        button,
+        .submit-btn,
+        .form-input,
+        textarea {
+        padding: 1em;
+        }
+
+        .reset-btn, .submit-btn {
+        background: #0275d8 ;
+        border: 1px solid whitesmoke;
+        color: #fff;
+        border-radius: 8px;
+        padding: 8px 20px;
+        text-transform: uppercase;
+        }
+        .submit-btn:hover,
+        .submit-btn:focus,
+        .reset-btn:hover,
+        .reset-btn:focus{
+        background: #015196;
+        outline: 0;
+        color: #eee;
+        }
+        .error {
+        color: #ec1c24;
+        }
+    
+    </style>
+</head>
+<body>
+    <header id="home">
+        <nav id="navbar">
+            <div class="container">
+                <h1 class="logo">
+                  <a href="index.html">Retail Management</a>
+                </h1>
+                <ul>
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="#">About</a></li>
+                  <li><a href="#">Contact</a></li>
+                  <li><a href="signup.html">Signup</a></li>
+                </ul>
+              </div>
+        </nav>
+    </header>
+    <div id="homee">
+        <h2 style="color: #000000; margin-bottom: 30px; text-align: center; text-decoration: underline;"></h2>
+        <div class="contain" style="margin-top: 40px; margin-bottom: 40px;">
+
+            <div class="wrapper">
+          
+              <div class="form">
+                <h4>GET IN TOUCH</h4>
+                <h2 class="form-headline">Send us a message</h2>
+                <form id="submit-form" action="">
+                  <p>
+                    <input id="name" class="form-input" name="name" type="text" placeholder="Your Name*">
+                    <small class="name-error"></small>
+                  </p>
+                  <p>
+                    <input id="email" class="form-input" name="email" type="email" placeholder="Your Email*">
+                    <small class="name-error"></small>
+                  </p>
+                  <p class="full-width">
+                    <select>
+                        <option>ID - 1001 - Chocolate - Diary Milk</option>
+                        <option>ID - 1002 - Drinks - Water Bottles</option>
+                        <option>ID - 1003 - Rice - Royal Rice Bags</option>
+                    </select>
+                  </p>
+                  <p class="full-width">
+                    <textarea  minlength="20" id="message" name="message" cols="30" rows="7" placeholder="Your Message*" required></textarea>
+                    <small></small>
+                  </p>
+                  <p class="full-width">
+                    <input type="submit" class="submit-btn" value="Submit">
+                    <button style="background-color: #DC4C64;" class="reset-btn" onclick="reset()">Reset</button>
+                  </p>
+                </form>
+              </div>
+          
+              <div class="contacts contact-wrapper">
+          
+                <ul>
+                  <li> For changes in inventory list please fill the contact form below with necessary details and submit it <a style="text-decoration: underline;" href="index.html"></a></li>
+                  <span class="hightlight-contact-info">
+                    <li class="email-info"><i class="fa fa-envelope" aria-hidden="true"></i>retailmanagement.website</li>
+                    <li><i class="fa fa-phone" aria-hidden="true"></i> <span class="highlight-text">+1(123)-456-7890</span></li>
+                  </span>
+                </ul>
+              </div>
+            </div>
+          </div>
+      
+    </div>
+    <footer>
+        <!--<div class="social">
+          <a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook fa-2x"></i></a>
+              <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter fa-2x"></i></a>
+              <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube fa-2x"></i></a>
+              <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+        </div>-->
+        <p>copyright &copy 2024 - Retail Management</p>
+    </footer>
+    <script src="./scripts/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Homepage | Retail Management</title>
+    <link rel="stylesheet" href="../css/style.css"/>
+    <link rel="stylesheet" href="./css/style.css"/>
+      <!-- Bootstrap core CSS -->
+    <script src="./scripts/logout.js"></script>
+    <style>
+      .btn{
+        background-color: #333;
+        border-radius: 8px;
+        padding: 8px 20px !important;
+      }
+      .btn:hover{
+        background-color: #007bff;
+        color: #fff;
+      }
+      footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%; 
+        background-color: #333; 
+        color: white;
+        text-align: center;
+        padding: 20px 0; 
+     }
+    .footer-content {
+        max-width: 960px;
+        margin: 0 auto;
+     }
+     #file-drop-area {
+        border: 2px dashed #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        text-align: center;
+        margin: 20px;
+        cursor: pointer;
+        min-height: 250px;
+        max-width: 600px;
+    }
+
+    #file-drop-area.dragover {
+        background-color: #f0f0f0;
+    }
+
+    #file-input {
+        display: none;
+    }
+    .addbtn{
+      background-color: #007bff;
+      border-radius: 8px;
+      padding: 8px 20px !important;
+      border-color: #ffffff00;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+    }
+    .addbtn:hover{
+      background-color: #004ea0;
+      color: #fff;
+    }
+    tbody tr td{
+      text-align: center !important;
+    }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./scripts/auth.js"></script>
+</head>
+<body>
+    <header id="home">
+        <nav id="navbar">
+            <div class="container">
+                <h1 class="logo">
+                  <a href="index.html">Retail Management</a>
+                </h1>
+                <ul>
+                  <li><a href="#" class="current">Home</a></li>
+                  <li><a href="products.html">Products</a></li>
+                  <li><a href="transactions.html">Transactions</a></li>
+                  <li><a href="billing.html">Billing</a></li>
+                  <li><a href="sales.html">Sales</a></li>
+                  <li><a href="#" onclick="logout()">Logout</a></li>
+                </ul>
+              </div>
+        </nav>
+      </header>
+      <div class="home-container">
+        <div class="section-heading" style="margin-top: 30px;">
+          <h2>Employee Management</h2>
+        </div>
+        <div class="home-header">
+          <div class="search-bar">
+           
+          </div>
+          <button class="add-button" onclick="document.getElementById('addEmployeePopup').style.display = 'block'">Add <span>&#43;</span></button>
+        </div>
+    
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Employee Name</th>
+              <th>Employee Mail Id</th>
+              <th>Edit / Delete</th>
+            </tr>
+          </thead>
+          <tbody id="employeesTable">
+  
+          </tbody>
+        </table>
+      </div>
+     
+      
+        <div id="addEmployeePopup" class="popup">
+          <div class="popup-content">
+              <span class="close" id="closePopup" style="font-size: 24px; font-weight: bolder;" onclick="document.getElementById('addEmployeePopup').style.display = 'none'">&times;</span>
+              <h3 style="text-align: center; margin-bottom: 20px;">ADD EMPLOYEE</h3>
+              <form id="addEmployeeForm">
+                  <label for="name">Employee Name:</label>
+                  <input type="text" name="name" id="name" required>
+                  <label for="email">Mail Id:</label>
+                  <textarea id="email" name="email" type="Email" required></textarea>
+                  <div style="display: flex; justify-content: center;">
+                    <button class="btn" type="submit">Add</button>
+                </div>            
+              </form>
+          </div>
+      </div>
+<script>
+  const addEmpForm = document.getElementById('addEmployeeForm')
+  addEmpForm.addEventListener('submit', async(e) => {
+    e.preventDefault()
+    console.log("Add Employee Form submitted");
+    // Get form data
+    const formData = new FormData(e.target);
+    const formDataObject = {};
+    formData.forEach((value, key) => {
+        formDataObject[key] = value;
+    });
+   console.log(formDataObject);
+   const addResponse = await fetch('/admin/addEmployee', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formDataObject)
+    }).then((res) => res.json())
+    console.log(addResponse);
+    if(addResponse.user){
+      console.log(addResponse.user)
+      alert('Employee added successfull')
+      window.location.reload();
+    } else {
+      console.log("Error ",addResponse)
+      alert("Failed to add Employee")
+    }
+  })
+</script>
+<script src="./scripts/getemployees.js"></script>
+<footer>
+  <!--<div class="social">
+    <a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook fa-2x"></i></a>
+        <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter fa-2x"></i></a>
+        <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube fa-2x"></i></a>
+        <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+  </div>-->
+  <p>copyright &copy 2024 - Retail Management</p>
+</footer>
+</body>
+</html>

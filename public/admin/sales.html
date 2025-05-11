@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Signup | Retail Management</title>
+    <link rel="stylesheet" href="../css/style.css"/>
+    <link rel="stylesheet" href="./css/style.css"/>
+    <link rel="stylesheet" href="./css/ecommerce-style.css"/>
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <style>
+      body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          min-height: 100vh;
+          background-color: #f0f0f0;
+          display: flex;
+          flex-direction: column;
+      }
+
+      .form-container {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+      .form{
+          background-color: #fff;
+          padding: 30px;
+          border-radius: 5px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+          min-width: 500px;
+          max-width: 800px;
+          display: block;
+          margin: 30px 2px;
+      }
+      h1 {
+          text-align: center;
+          margin-top: 10px;
+      }
+
+      .input-group {
+          margin-bottom: 15px;
+      }
+
+      .input-group label {
+          display: block;
+          margin-bottom: 5px;
+          font-weight: bolder;
+      }
+
+      .input-group input {
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #ddd;
+          border-radius: 3px;
+      }
+      button {
+          background-color: #007bff;
+          color: #fff;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 3px;
+          cursor: pointer;
+      }
+      .btn{
+        background-color: #333;
+        border-radius: 8px;
+        padding: 8px 20px !important;
+      }
+      .btn:hover{
+        background-color: #007bff;
+        color: #fff;
+      }
+   
+
+    .addbtn{
+      background-color: #333;
+      border-radius: 8px;
+      padding: 8px 20px !important;
+    }
+    .addbtn:hover{
+      background-color: #007bff;
+      color: #fff;
+    }
+    .products-table{
+        margin: 20px 60px 20px 10px
+    }
+
+
+    .add-product button{
+        padding: 8px 12px;
+        border: none;
+        border-radius: 8px;
+        margin: 8px;
+    }
+
+
+    table tr td{
+        vertical-align: middle;
+    }
+
+    td button{
+        margin: 5px;
+    }
+
+    form .input-field > div{
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        max-width: 500px;
+        margin: 12px auto;
+    }
+
+    form .input-field > div input{
+        padding: 6px 12px;
+    }
+    th{
+      color: #fff !important;
+    }
+    #file-drop-area {
+        border: 2px dashed #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        text-align: center;
+        margin: 20px;
+        cursor: pointer;
+        min-height: 250px;
+        max-width: 600px;
+    }
+
+    #file-drop-area.dragover {
+        background-color: #f0f0f0;
+    }
+
+    #file-input {
+        display: none;
+    }
+    .addbtn{
+      background-color: #007bff;
+      border-radius: 8px;
+      padding: 8px 20px !important;
+      border-color: #ffffff00;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+    }
+    .addbtn:hover{
+      background-color: #004ea0;
+      color: #fff;
+    }
+    /* arrows */
+
+    select.classic {
+      background-image:
+        linear-gradient(45deg, transparent 50%, blue 50%),
+        linear-gradient(135deg, blue 50%, transparent 50%),
+        linear-gradient(to right, skyblue, skyblue);
+      background-position:
+        calc(100% - 20px) calc(1em + 2px),
+        calc(100% - 15px) calc(1em + 2px),
+        100% 0;
+      background-size:
+        5px 5px,
+        5px 5px,
+        2.5em 2.5em;
+      background-repeat: no-repeat;
+    }
+
+    select.classic:focus {
+      background-image:
+        linear-gradient(45deg, white 50%, transparent 50%),
+        linear-gradient(135deg, transparent 50%, white 50%),
+        linear-gradient(to right, gray, gray);
+      background-position:
+        calc(100% - 15px) 1em,
+        calc(100% - 20px) 1em,
+        100% 0;
+      background-size:
+        5px 5px,
+        5px 5px,
+        2.5em 2.5em;
+      background-repeat: no-repeat;
+      border-color: grey;
+      outline: 0;
+    }
+    table {
+      border-collapse: collapse !important;
+      width: 100% !important;
+    }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<body>
+    <header id="home">
+        <nav id="navbar">
+            <div class="container">
+                <h1 class="logo">
+                  <a href="index.html">Retail Management</a>
+                </h1>
+                <ul>
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="products.html">Products</a></li>
+                  <li><a href="transactions.html">Transactions</a></li>
+                  <li><a href="billing.html">Billing</a></li>
+                  <li><a href="#" class="current">Sales</a></li>
+                  <li><a href="#">Logout</a></li>
+                </ul>
+              </div>
+        </nav>
+      </header>
+      <div class="home-container" style="min-width: calc(100% - 200px)">
+        <div class="section-heading" style="margin-top: 30px;">
+          <h2>Sales Reports & Analytics</h2>
+        </div>
+        <div class="home-header">
+          <div class="search-bar">
+           <select id="pieChartSelection">
+            <option value="Jan-2024">Jan-2024</option>
+            <option value="Feb-2024">Feb-2024</option>
+            <option value="Mar-2024">Mar-2024</option>
+            <option value="Apr-2024">Apr-2024</option>
+           </select> <h5 style="display: inline-block; margin-left: 20px;">Monthly Report</h5>
+          </div>
+          <button class="add-button" ><span>&#43;</span></button>
+        </div>
+        <div class="chart-container" style="position: relative; height:40vh; width:40vw">
+          <canvas id="pieChart"></canvas>
+        </div>
+        <div class="chart-container" style="position: relative; height:40vh; width:40vw">
+          <canvas id="weeklyProductSaleLineChart"></canvas>
+        </div>
+      </div>
+      <script>
+        function scrollToTarget(targetId) {
+          const targetElement = document.getElementById(targetId);
+
+          if (targetElement) {
+            targetElement.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start',
+            });
+          }
+        }
+
+      </script>
+   <!-- <footer>
+      <!-<div class="social">
+        <a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook fa-2x"></i></a>
+            <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter fa-2x"></i></a>
+            <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube fa-2x"></i></a>
+            <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+      </div>--
+      <p>copyright &copy 2024 - Retail Management</p>
+    </footer> -->
+    <script src="./scripts/jquery-3.3.1.min.js"></script>
+    <script src="./scripts/bootstrap.min.js"></script>
+    <script src="./scripts/reports.js"></script>
+    <footer style="position: relative; margin-top: auto;">
+      <p>copyright &copy 2024 - Retail Management</p>
+    </footer> 
+</body>
+</html>
